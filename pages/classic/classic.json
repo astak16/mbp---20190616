@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "u-like":"/component/like/index",
+    "u-moive":"/component/classic/moive/index"
+  }
+}

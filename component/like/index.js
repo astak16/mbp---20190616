@@ -1,3 +1,7 @@
+import { HTTP } from '../../utils/http.js'
+
+let http = new HTTP()
+
 Component({
   properties: {
     like: {
@@ -23,6 +27,8 @@ Component({
         count: count,
         like: !like
       })
+      let behavior = this.properties.like ? 'like' : 'cancel'
+      this.triggerEvent('like',{ behavior },{})
     }
   }
 })

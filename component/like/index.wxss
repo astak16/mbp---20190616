@@ -2,6 +2,7 @@
   padding: 10px;
   display: inline-flex;
   flex-direction: row;
+  width: 90rpx;
 }
 
 .container image{

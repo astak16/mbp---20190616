@@ -1,0 +1,2 @@
+<u-like bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}" />
+<u-moive  img="{{classic.image}}" content="{{classic.content}}"/>
