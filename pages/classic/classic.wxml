@@ -1,2 +1,13 @@
-<u-like bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}" />
-<u-moive  img="{{classic.image}}" content="{{classic.content}}"/>
+<view class="container">
+  <view class="header">
+    <u-exsoide class="exsoide" index="{{classic.index}}"/>
+    <u-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+  </view>
+  <u-moive hidden="{{classic.type !== 100}}" img="{{classic.image}}" content="{{classic.content}}"/>
+  <u-music wx:if="{{classic.type === 200}}" img="{{classic.image}}" content="{{classic.content}}" src="{{classic.url}}" title="{{classic.title}}"/>
+  <u-essay hidden="{{classic.type !== 300}}" img="{{classic.image}}" content="{{classic.content}}"/>
+  <u-navi class="navi" title="{{classic.title}}"
+          first="{{first}}" latest="{{latest}}"
+          bind:next="onNext" bind:previous="onPrevious"
+  />
+</view>

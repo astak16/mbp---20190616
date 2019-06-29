@@ -1,12 +1,10 @@
-import { classicBeh } from '../classic-beh.js'
-
+// component/book/index.js
 Component({
   /**
    * 组件的属性列表
    */
-  behaviors: [classicBeh],
   properties: {
-    
+    book: Object
   },
 
   /**
@@ -20,6 +18,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onTips () {
+      wx.navigateTo({
+        url: `/pages/book-detail/book-detail?bid=${this.properties.book.id}`
+      })
+    }
   }
 })
