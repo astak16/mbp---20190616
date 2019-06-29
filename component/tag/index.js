@@ -1,12 +1,13 @@
-import { classicBeh } from '../classic-beh.js'
-
+// component/tag/index.js
 Component({
   /**
    * 组件的属性列表
    */
-  behaviors: [classicBeh],
+  options:{
+    multipleSlots: true
+  },
   properties: {
-    
+    text: String
   },
 
   /**

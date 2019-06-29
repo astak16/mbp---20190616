@@ -1,6 +1,10 @@
 {
   "usingComponents": {
     "u-like":"/component/like/index",
-    "u-moive":"/component/classic/moive/index"
+    "u-moive":"/component/classic/moive/index",
+    "u-music":"/component/classic/music/index",
+    "u-essay":"/component/classic/essay/index",
+    "u-exsoide":"/component/exsoide/index",
+    "u-navi":"/component/navi/index"
   }
 }

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "u-book":"/component/book/index"
+  }
+}
