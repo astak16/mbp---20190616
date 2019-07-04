@@ -1,5 +1,8 @@
 import { BookModel } from '../../modles/book'
+import { LikeModel } from '../../modles/like'
+
 const bookModel = new BookModel()
+const likeModel = new LikeModel()
 
 Page({
 
@@ -10,40 +13,75 @@ Page({
     book: null,
     comments : [],
     likeStatus: false,
-    likeCount: 0
+    likeCount: 0,
+    posting: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading()
+
     const bid = options.bid
     const detail = bookModel.getDetail(bid)
     const comment = bookModel.getComments(bid)
     const likeStatus = bookModel.getLikeStatus(bid)
 
-    detail.then(res => {
-      console.log(res)
-      this.setData({
-        book: res
+    Promise.all([detail, comment, likeStatus])
+      .then(res => {
+        this.setData({
+          book: res[0],
+          comments: res[1].comments,
+          likeStatus: res[2].like_status,
+          likeCount: res[2].fav_nums
+        })
+        wx.hideLoading()
       })
-    })
-    comment.then(res => {
-      console.log(res)
-      this.setData({
-        comments: res.comments
-      })
-    })
-    likeStatus.then(res => {
-      console.log(res)
-      this.setData({
-        likeStatus: res.like_status,
-        likeCount: res.fav_nums
-      })
-    })
-    console.log(this.data)
   },
+  onLike (event) {
+    const like_or_cancel = event.detail.behavior
+    likeModel.like(like_or_cancel, this.data.book.id, 400)
+  },
+  onFakePost (event) {
+    this.setData({
+      posting: true
+    })
+    console.log(this.data.posting)
+  },
+  onCancel () {
+    this.setData({
+      posting: false
+    })
+  },
+  onPost (event) {
+    const comment = event.detail.text
+    console.log(comment)
 
+    if (comment.length > 12) {
+      wx.showToast({
+        title: '短评最多12个字',
+        icon: 'none'
+      })
+      return
+    }
+
+    bookModel.postComment(this.data.book.id, comment)
+      .then(res => {
+        wx.showToast({
+          title: '+1',
+          icon: 'none'
+        })
+      })
+
+    this.data.comments.unshift({
+      comment,
+      nums: 1
+    })
+    this.setData({
+      comments: this.data.comments
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
