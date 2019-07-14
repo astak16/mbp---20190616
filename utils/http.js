@@ -28,7 +28,7 @@ class HTTP{
           this._show_error(res.data.error_code)
         }
       },
-      fail: (err) => {
+      fail: () => {
         this._show_error(1)
       }
     })

@@ -1,6 +1,6 @@
-import { HTTP } from '../../utils/http.js'
+// import { HTTP } from '../../utils/http.js'
 
-let http = new HTTP()
+// let http = new HTTP()
 
 Component({
   properties: {
@@ -9,6 +9,9 @@ Component({
     },
     count: {
       type: Number
+    },
+    readOnly: {
+      type: Boolean
     }
   },
   data: {
@@ -16,7 +19,10 @@ Component({
     noSrc: 'images/unLike.png'
   },
   methods: {
-    onLike(event) {
+    onLike() {
+      if (this.properties.readOnly) {
+        return
+      }
       let like = this.properties.like
       let count = this.properties.count
 

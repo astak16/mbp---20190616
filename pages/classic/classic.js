@@ -12,7 +12,7 @@ Page({
     likeCount: 0,
     likeStatus: false
   },
-  onLoad(options){
+  onLoad(){
     classicModel.getLatest(res => {
       this.setData({
         classic: res,

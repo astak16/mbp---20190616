@@ -1,4 +1,5 @@
 import { BookModel } from '../../modles/book'
+import { random } from '../../modles/common'
 const bookModel = new BookModel()
 
 Page({
@@ -7,18 +8,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    books: []
+    books: [],
+    searching: false,
+    more: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     const hotList = bookModel.getHotList()
     hotList.then(res => {
       this.setData({
         books: res
       })
+    })
+  },
+  onSearch () {
+    this.setData({
+      searching: true
+    })
+  },
+  onCancel () {
+    this.setData({
+      searching: false
     })
   },
 
@@ -61,7 +74,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      more: random(16)
+    })
   },
 
   /**

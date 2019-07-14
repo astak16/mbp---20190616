@@ -12,7 +12,6 @@ class ClassicModel extends HTTP {
     })
   }
   getClassic (index,nextOrPrevious , sCallback) {
-    console.log(index)
     let key = nextOrPrevious == 'next' ?  this._getKey(index + 1) : this._getKey(index - 1)
     let classic = wx.getStorageSync(key)
     if (!classic) {
@@ -26,6 +25,13 @@ class ClassicModel extends HTTP {
     } else {
       sCallback(classic)
     }
+  }
+  getMyfavor (success) {
+    const params = {
+      url: 'classic/favor',
+      success
+    }
+    this.request(params)
   }
   isFirst (index) {
     return index == 1 ? true : false

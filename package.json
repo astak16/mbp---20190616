@@ -1,0 +1,26 @@
+{
+  "name": "oldIsland",
+  "version": "1.0.0",
+  "description": "1. `display: inline-flex`动态自适应 2. 消除不必要的空白，特别是字体，`font-size`和`line-height`设置一样大小 3. 开发组件形成自己的风格，比如：`v-like`，`v`是法语`vent`的首字母，表示林间有风",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "eslint": "eslint component modles pages utils *.js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astak16/mbp-oldIsland-20190616.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astak16/mbp-oldIsland-20190616/issues"
+  },
+  "homepage": "https://github.com/astak16/mbp-oldIsland-20190616#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0"
+  }
+}

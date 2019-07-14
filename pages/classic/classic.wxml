@@ -1,7 +1,12 @@
 <view class="container">
   <view class="header">
     <u-exsoide class="exsoide" index="{{classic.index}}"/>
-    <u-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+    <view class="like-container">
+      <u-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+      <u-button class="share-btn" open-type="share">
+        <image class="share" slot="img" src="/images/icon/share.png" />
+      </u-button>
+    </view>
   </view>
   <u-moive hidden="{{classic.type !== 100}}" img="{{classic.image}}" content="{{classic.content}}"/>
   <u-music wx:if="{{classic.type === 200}}" img="{{classic.image}}" content="{{classic.content}}" src="{{classic.url}}" title="{{classic.title}}"/>

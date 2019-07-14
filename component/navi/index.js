@@ -29,7 +29,6 @@ Component({
       }
     },
     onRight () {
-      console.log(this.properties.first)
       if (!this.properties.first) {
         this.triggerEvent('previous', {}, {})
       }

@@ -62,7 +62,7 @@
       </u-tag>
     </block>
   </view>
-  <input type="text" class="post" placeholder="短评最多12个字" />
+  <input bind:confirm="onPost" type="text" class="post" placeholder="短评最多12个字" />
 </view>
 <u-mask wx:if="{{posting}}" />
 

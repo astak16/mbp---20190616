@@ -43,11 +43,10 @@ Page({
     const like_or_cancel = event.detail.behavior
     likeModel.like(like_or_cancel, this.data.book.id, 400)
   },
-  onFakePost (event) {
+  onFakePost () {
     this.setData({
       posting: true
     })
-    console.log(this.data.posting)
   },
   onCancel () {
     this.setData({
@@ -55,8 +54,10 @@ Page({
     })
   },
   onPost (event) {
-    const comment = event.detail.text
-    console.log(comment)
+    const comment = event.detail.text || event.detail.value
+
+    if (!comment)
+      retrun
 
     if (comment.length > 12) {
       wx.showToast({
@@ -67,7 +68,7 @@ Page({
     }
 
     bookModel.postComment(this.data.book.id, comment)
-      .then(res => {
+      .then(() => {
         wx.showToast({
           title: '+1',
           icon: 'none'
@@ -75,11 +76,12 @@ Page({
       })
 
     this.data.comments.unshift({
-      comment,
+      content: comment,
       nums: 1
     })
     this.setData({
-      comments: this.data.comments
+      comments: this.data.comments,
+      posting: false
     })
   },
   /**

@@ -5,6 +5,7 @@
     "u-music":"/component/classic/music/index",
     "u-essay":"/component/classic/essay/index",
     "u-exsoide":"/component/exsoide/index",
-    "u-navi":"/component/navi/index"
+    "u-navi":"/component/navi/index",
+    "u-button":"/component/image-button/index"
   }
 }
